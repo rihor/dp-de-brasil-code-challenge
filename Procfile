@@ -1,1 +1,1 @@
-web:yarn build && yarn migrate && yarn start
+web:yarn deploy
