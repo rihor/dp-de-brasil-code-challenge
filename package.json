@@ -4,12 +4,11 @@
   "private": true,
   "scripts": {
     "build": "node ace build --production",
-    "start": "node build/server.js",
+    "start": "node server.js",
     "dev": "node ace serve --watch",
     "lint": "eslint . --ext=.ts",
     "format": "prettier --write .",
     "migrate": "node ace migration:run",
-    "deploy": "yarn && yarn build && yarn start",
     "test": "node -r @adonisjs/assembler/build/register japaFile.ts"
   },
   "devDependencies": {
