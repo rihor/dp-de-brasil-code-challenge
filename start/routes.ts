@@ -20,6 +20,4 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.resource('deliveries', 'DeliveriesController')
-  .only(['index', 'store'])
-  .apiOnly()
+Route.resource('deliveries', 'DeliveriesController').only(['index', 'store'])
