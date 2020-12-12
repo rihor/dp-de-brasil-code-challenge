@@ -1,2 +1,2 @@
 web: yarn start
-release: yarn migrate
+release: node -r @adonisjs/assembler/build/register ace migration:run
