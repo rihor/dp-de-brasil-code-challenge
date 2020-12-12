@@ -8,7 +8,7 @@
     "dev": "node ace serve --watch",
     "lint": "eslint . --ext=.ts",
     "format": "prettier --write .",
-    "migrate": "node -r ./node_modules/@adonisjs/assembler/build/register ace migration:run",
+    "migrate": "node ace migration:run",
     "test": "node -r @adonisjs/assembler/build/register japaFile.ts"
   },
   "devDependencies": {
