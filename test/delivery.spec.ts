@@ -57,4 +57,25 @@ test.group('Deliveries', (group) => {
       'updated_at',
     ])
   })
+
+  test('if delivery fails validation', async (assert) => {
+    const { status, body } = await supertest(baseUrl).post('/deliveries').send({
+      date: new Date().toISOString(),
+      start_latitude: -19.9200853,
+      start_longitude: -43.9401973,
+      destination_latitude: -23.3958425,
+      destination_longitude: -46.3311818,
+    })
+
+    assert.equal(status, 400)
+    assert.deepEqual(body, {
+      errors: [
+        {
+          rule: 'required',
+          field: 'client_name',
+          message: 'required validation failed',
+        },
+      ],
+    })
+  })
 })
