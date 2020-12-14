@@ -4,10 +4,8 @@ import { DateTime } from 'luxon'
 interface CreateDelivery {
   client_name: string
   date: DateTime
-  start_latitude: number
-  start_longitude: number
-  destination_latitude: number
-  destination_longitude: number
+  start: string
+  destination: string
 }
 
 export class DeliveryService {
@@ -20,18 +18,14 @@ export class DeliveryService {
   public async createDelivery({
     client_name,
     date,
-    start_latitude,
-    start_longitude,
-    destination_latitude,
-    destination_longitude,
+    start,
+    destination,
   }: CreateDelivery) {
     const delivery = await Delivery.create({
       client_name,
       date,
-      start_latitude,
-      start_longitude,
-      destination_latitude,
-      destination_longitude,
+      start,
+      destination,
     })
 
     await delivery.save()

@@ -25,7 +25,6 @@ export default class DeliveriesController {
 
       return delivery
     } catch (error) {
-      console.log(error.messages)
       ctx.response.status(400).json(error.messages)
     }
   }

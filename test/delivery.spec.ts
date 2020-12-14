@@ -17,10 +17,8 @@ test.group('Deliveries', (group) => {
     const { status, body } = await supertest(baseUrl).post('/deliveries').send({
       client_name: 'User test',
       date: new Date().toISOString(),
-      start_latitude: -19.9200853,
-      start_longitude: -43.9401973,
-      destination_latitude: -23.3958425,
-      destination_longitude: -46.3311818,
+      start: 'Rio de Janeiro',
+      destination: 'São Paulo',
     })
 
     assert.equal(status, 200)
@@ -28,10 +26,8 @@ test.group('Deliveries', (group) => {
       'id',
       'client_name',
       'date',
-      'start_latitude',
-      'start_longitude',
-      'destination_latitude',
-      'destination_longitude',
+      'start',
+      'destination',
       'created_at',
       'updated_at',
     ])
@@ -49,10 +45,8 @@ test.group('Deliveries', (group) => {
       'id',
       'client_name',
       'date',
-      'start_latitude',
-      'start_longitude',
-      'destination_latitude',
-      'destination_longitude',
+      'start',
+      'destination',
       'created_at',
       'updated_at',
     ])
@@ -61,10 +55,8 @@ test.group('Deliveries', (group) => {
   test('if delivery fails validation', async (assert) => {
     const { status, body } = await supertest(baseUrl).post('/deliveries').send({
       date: new Date().toISOString(),
-      start_latitude: -19.9200853,
-      start_longitude: -43.9401973,
-      destination_latitude: -23.3958425,
-      destination_longitude: -46.3311818,
+      start: 'Rio de Janeiro',
+      destination: 'São Paulo',
     })
 
     assert.equal(status, 400)

@@ -12,16 +12,10 @@ export default class Delivery extends BaseModel {
   public date: DateTime
 
   @column()
-  public start_latitude: number
+  public start: string
 
   @column()
-  public start_longitude: number
-
-  @column()
-  public destination_latitude: number
-
-  @column()
-  public destination_longitude: number
+  public destination: string
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

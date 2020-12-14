@@ -26,10 +26,8 @@ export default class DeliveryValidator {
   public schema = schema.create({
     client_name: schema.string(),
     date: schema.date(),
-    start_latitude: schema.number(),
-    start_longitude: schema.number(),
-    destination_latitude: schema.number(),
-    destination_longitude: schema.number(),
+    start: schema.string(),
+    destination: schema.string(),
   })
 
   /**

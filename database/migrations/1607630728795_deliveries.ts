@@ -14,10 +14,8 @@ export default class Deliveries extends BaseSchema {
         .defaultTo(this.raw('uuid_generate_v4()'))
       table.string('client_name').notNullable()
       table.dateTime('date').notNullable()
-      table.decimal('start_latitude', 10, 8).notNullable()
-      table.decimal('start_longitude', 11, 8).notNullable()
-      table.decimal('destination_latitude', 10, 8).notNullable()
-      table.decimal('destination_longitude', 11, 8).notNullable()
+      table.string('start').notNullable()
+      table.string('destination').notNullable()
       table.timestamps(true)
     })
   }
