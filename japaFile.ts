@@ -9,17 +9,17 @@ process.env.NODE_ENV = 'testing'
 process.env.ADONIS_ACE_CWD = join(__dirname)
 sourceMapSupport.install({ handleUncaughtExceptions: false })
 
-// async function runMigrations() {
-//   await execa.node('ace', ['migration:run'], {
-//     stdio: 'inherit',
-//   })
-// }
+async function runMigrations() {
+  await execa.node('ace', ['migration:run'], {
+    stdio: 'inherit',
+  })
+}
 
-// async function rollbackMigrations() {
-//   await execa.node('ace', ['migration:rollback'], {
-//     stdio: 'inherit',
-//   })
-// }
+async function rollbackMigrations() {
+  await execa.node('ace', ['migration:rollback'], {
+    stdio: 'inherit',
+  })
+}
 
 async function startHttpServer() {
   const { Ignitor } = await import('@adonisjs/core/build/src/Ignitor')
@@ -32,6 +32,6 @@ async function startHttpServer() {
  */
 configure({
   files: ['test/**/*.spec.ts'],
-  before: [startHttpServer],
-  after: [],
+  before: [runMigrations, startHttpServer],
+  after: [rollbackMigrations],
 })
