@@ -3,13 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "node ace build --production && node ace migration:run --force",
+    "build": "node ace build --production",
     "start": "node build/server.js",
     "dev": "node ace serve --watch",
     "lint": "eslint . --ext=.ts",
     "format": "prettier --write .",
-    "migrate": "node ace migration:run",
-    "test": "node -r @adonisjs/assembler/build/register japaFile.ts"
+    "migrate": "node ace migration:run"
   },
   "devDependencies": {
     "@adonisjs/assembler": "^3.0.0",
