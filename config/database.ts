@@ -42,9 +42,13 @@ const databaseConfig: DatabaseConfig & { orm: Partial<OrmConfig> } = {
         user: Env.get('PG_USER'),
         password: Env.get('PG_PASSWORD', ''),
         database: Env.get('PG_DB_NAME'),
-        ssl: {
-          rejectUnauthorized: false,
-        },
+        ...(Env.get('PG_SSL')
+          ? {
+              ssl: {
+                rejectUnauthorized: false,
+              },
+            }
+          : undefined),
       },
       healthCheck: false,
       debug: false,
@@ -57,9 +61,13 @@ const databaseConfig: DatabaseConfig & { orm: Partial<OrmConfig> } = {
         user: Env.get('PG_USER'),
         password: Env.get('PG_PASSWORD', ''),
         database: Env.get('PG_DB_NAME'),
-        ssl: {
-          rejectUnauthorized: false,
-        },
+        ...(Env.get('PG_SSL')
+          ? {
+              ssl: {
+                rejectUnauthorized: false,
+              },
+            }
+          : undefined),
       },
       healthCheck: false,
       debug: false,
