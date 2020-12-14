@@ -14,18 +14,14 @@ export default class DeliveriesController {
   public async store(ctx: HttpContextContract) {
     const deliveryValidator = new DeliveryValidator(ctx)
 
-    try {
-      const data = await ctx.request.validate({
-        schema: deliveryValidator.schema,
-      })
+    const data = await ctx.request.validate({
+      schema: deliveryValidator.schema,
+    })
 
-      const deliveryService = new DeliveryService()
+    const deliveryService = new DeliveryService()
 
-      const delivery = await deliveryService.createDelivery(data)
+    const delivery = await deliveryService.createDelivery(data)
 
-      return delivery
-    } catch (error) {
-      ctx.response.status(400).json(error.messages)
-    }
+    return delivery
   }
 }
